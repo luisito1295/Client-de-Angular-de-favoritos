@@ -1,0 +1,11 @@
+<div class="btn-atras">
+  <a [routerLink]="['home']">Atras</a>
+</div>
+
+<div class="favorito-box" *ngIf="favorito">
+
+  <h1>{{favorito.title}}</h1>
+  <p class="url">{{favorito.url}}</p>
+  <p class="des">{{favorito.des}}</p>
+
+</div>

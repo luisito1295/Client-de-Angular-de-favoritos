@@ -1,0 +1,40 @@
+<strong>{{title}}</strong>
+
+<div class="loading" *ngIf="loading">
+  <img src="../../../assets/img//loader.gif" alt="">
+</div>
+
+<ul id="favoritos-list" *ngIf="favorito">
+
+  <li *ngFor="let fav of favorito" class="favorito-item">
+    <div class="content-data">
+      <p>{{ fav.title }}</p>
+      <p class="url">{{ fav.url }}</p>
+      <p class="buttons">
+        <a href="{{fav.url}}" target="_black" class="btn btn-default">
+          Ir al marcador
+        </a>
+        <a [routerLink]="['/marcador', fav._id]" class="btn btn-ver">
+          Ver
+        </a>
+        <a [routerLink]="['/editar-marcador', fav._id]" class="btn btn-editar">
+          Editar
+        </a>
+        <a (click) = "onBorrarConfirm(fav._id)" class="btn btn-eliminar">
+          Eliminar
+        </a>
+      </p>
+      <div class="seguro" *ngIf = "confirmado == fav._id">
+        <p>
+          <strong>¿Estas seguro que lo desea borrar el registro?</strong>
+        </p>
+        <a (click) = "onBorrarFavorito(fav._id)" [routerLink]="['/home']" class="btn btn-eliminar">
+          Eliminar
+        </a>
+        <a (click) = "onCancelarConfirm(fav._id)" class="btn btn-ver">
+          Cancelar
+        </a>
+      </div>
+    </div>
+  </li>
+</ul>

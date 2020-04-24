@@ -1,0 +1,37 @@
+
+<h1>{{title}}</h1>
+
+<div class="favorito-box" *ngIf="favorito" >
+
+  <form #formFavorito="ngForm" (ngSubmit)="onSubmit()">
+
+    <label>Titulo:</label>
+    <p>
+      <input type="text" name="title" #title="ngModel" [(ngModel)]="favorito.title" required >
+      <span *ngIf="!title.valid && title.touched">
+				El titulo no es válido!!
+			</span>
+    </p>
+
+    <label>Descripcion:</label>
+    <p>
+      <textarea type="text" name="des" #des="ngModel" [(ngModel)]="favorito.des" required ></textarea>
+      <span *ngIf="!des.valid && des.touched">
+				La descripcion no es válida!!
+			</span>
+    </p>
+
+    <label>URL:</label>
+    <p>
+      <input type="text" name="url" #url="ngModel" [(ngModel)]="favorito.url" required >
+      <span *ngIf="!url.valid && url.touched">
+				El url no es válida!!
+			</span>
+    </p>
+
+    <input type="submit" value="Crear favorito" class="btn btn-success" />
+
+  </form>
+
+</div>
+
